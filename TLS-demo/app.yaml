@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tls-demo
+  finalizers: []
+spec:
+  destination:
+    name: ''
+    namespace: tls-demo
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: TLS-demo
+    repoURL: 'https://github.com/SeboKnt/hf-test-cluster'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
