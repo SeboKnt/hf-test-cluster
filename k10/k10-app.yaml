@@ -8,7 +8,7 @@ spec:
   destination:
     name: ''
     namespace: kasten-io
-    server: 'https://kubernetes.default.svc'
+    server: 'https://5.75.138.202:6443'
   source:
     path: ''
     repoURL: 'https://charts.kasten.io/'
