@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k10
+  namespace: argocd
+  finalizers: []
+spec:
+  destination:
+    name: ''
+    namespace: kasten-io
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ''
+    repoURL: 'https://charts.kasten.io/'
+    targetRevision: 6.0.11
+    chart: k10
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
