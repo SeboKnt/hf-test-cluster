@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tls-demo
+  namespace: tls-demo
+spec:
+  secretName: tls-demo
+  issuerRef:
+    kind: ClusterIssuer
+    name: production
+  commonName: tls.k.youngandhungry.org
+  dnsNames:
+  - tls.k.youngandhungry.org

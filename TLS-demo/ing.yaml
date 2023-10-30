@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-demo
+  namespace: tls-demo
+  labels:
+    app.kubernetes.io/name: tls-demo
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: tls-demo
+                port:
+                  number: 8080
+      host: tls.k.youngandhungry.org
+  tls:
+    - hosts:
+        - tls.k.youngandhungry.org
+      secretName: tls-demo
