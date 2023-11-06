@@ -13,8 +13,6 @@ spec:
     path: cert-manager
     repoURL: 'git@github.com:SeboKnt/hf-test-cluster.git'
     targetRevision: HEAD
-    directory:
-      recurse: true
   sources: []
   project: default
   syncPolicy:

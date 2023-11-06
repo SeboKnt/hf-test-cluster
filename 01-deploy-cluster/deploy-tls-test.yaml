@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tls-demo
+  name: tls-test
+  namespace: argocd
   finalizers: []
 spec:
   destination:
     name: ''
     namespace: tls-demo
-    server: 'https://kubernetes.default.svc'
+    server: 'https://94.130.177.45:6443'
   source:
     path: TLS-demo
-    repoURL: 'https://github.com/SeboKnt/hf-test-cluster'
+    repoURL: 'git@github.com:SeboKnt/hf-test-cluster.git'
     targetRevision: HEAD
   sources: []
   project: default
@@ -18,3 +19,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
