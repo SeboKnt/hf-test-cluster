@@ -1,22 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k10
+  name: cert-manger
   namespace: argocd
   finalizers: []
 spec:
   destination:
     name: ''
-    namespace: kasten-io
-    server: 'https://kubernetes.default.svc'
+    namespace: cert-manger
+    server: 'https://94.130.177.45:6443'
   source:
     path: ''
-    repoURL: 'https://charts.kasten.io/'
-    targetRevision: 6.0.11
-    chart: k10
+    repoURL: 'https://charts.jetstack.io'
+    targetRevision: v1.13.2
+    chart: cert-manager
   sources: []
   project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
