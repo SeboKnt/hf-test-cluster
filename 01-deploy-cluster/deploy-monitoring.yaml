@@ -1,19 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
-  namespace: argocd
+  name: monitoring
   finalizers: []
 spec:
   destination:
     name: ''
-    namespace: cert-manager
-    server: 'https://kubernetes.default.svc'
+    namespace: monitoring
+    server: 'https://94.130.177.45:6443'
   source:
-    path: ''
-    repoURL: 'https://charts.jetstack.io'
-    targetRevision: v1.13.2
-    chart: cert-manager
+    path: monitoring
+    repoURL: 'git@github.com:SeboKnt/hf-test-cluster.git'
+    targetRevision: HEAD
   sources: []
   project: default
   syncPolicy:
