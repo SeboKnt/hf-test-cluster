@@ -1,0 +1,24 @@
+---
+admin:
+  image: seboknt/admin-ui:latest
+ui:
+  image: seboknt/ui:latest
+gargantua:
+  image: seboknt/gargantua:latest
+ingress:
+  annotations: {}
+  enabled: true
+  hostnames:
+    admin: admin.youngandhungry.org
+    backend: api.youngandhungry.org
+    shell: shell.youngandhungry.org
+    ui: learn.youngandhungry.org
+  tls:
+    enabled: true
+    secrets:
+      admin: admin-tls-secret
+      backend: backend-tls-secret
+      shell: shell-tls-secret
+      ui: ui-tls-secret
+insecure: false
+

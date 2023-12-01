@@ -1,0 +1,1 @@
+kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system  -f flux-s3-secret.yaml -o yaml > flux-s3-sealed-secret.yaml

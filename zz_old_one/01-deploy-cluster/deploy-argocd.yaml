@@ -8,7 +8,7 @@ spec:
   destination:
     name: ''
     namespace: argocd
-    server: 'https://94.130.177.45:6443'
+    server: 'https://xxx.xxx.xxx.xxx:6443'
   source:
     path: argocd
     repoURL: 'git@github.com:SeboKnt/hf-test-cluster.git'

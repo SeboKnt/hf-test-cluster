@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k10
+  name: tls-test
   namespace: argocd
   finalizers: []
 spec:
   destination:
     name: ''
-    namespace: kasten-io
-    server: 'https://94.130.177.45:6443'
+    namespace: tls-demo
+    server: 'https://xxx.xxx.xxx.xxx:6443'
   source:
-    path: k10
+    path: TLS-demo
     repoURL: 'git@github.com:SeboKnt/hf-test-cluster.git'
     targetRevision: HEAD
   sources: []

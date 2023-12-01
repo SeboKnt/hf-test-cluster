@@ -1,0 +1,10 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: hobbyfarm
+  namespace: hobbyfarm-system
+spec:
+  repo: https://hobbyfarm.github.io/hobbyfarm
+  chart: hobbyfarm
+  version: v4.0.0

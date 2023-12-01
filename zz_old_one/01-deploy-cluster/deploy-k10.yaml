@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: k10
   namespace: argocd
   finalizers: []
 spec:
   destination:
     name: ''
-    namespace: cert-manager
-    server: 'https://94.130.177.45:6443'
+    namespace: kasten-io
+    server: 'https://xxx.xxx.xxx.xxx:6443'
   source:
-    path: cert-manager
+    path: k10
     repoURL: 'git@github.com:SeboKnt/hf-test-cluster.git'
     targetRevision: HEAD
   sources: []

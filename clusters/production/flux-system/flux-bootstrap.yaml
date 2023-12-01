@@ -1,0 +1,26 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: repo
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    branch: main
+  url: https://github.com/SeboKnt/hf-test-cluster
+
+### apiVersion: source.toolkit.fluxcd.io/v1beta2
+### kind: Bucket
+### metadata:
+###   name: aws
+###   namespace: flux-system
+### spec:
+###   interval: 5m0s
+###   provider: aws
+###   bucketName: <Name of bucket>
+###   endpoint: s3.amazonaws.com
+###   region: eu-central-1
+###   timeout: 30s
+###   secretRef:
+###     name: aws-credentials

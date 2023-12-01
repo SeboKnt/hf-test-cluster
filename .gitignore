@@ -1,0 +1,7 @@
+IaC/terraform/.terraform
+IaC/terraform/.terraform.lock.hcl
+IaC/terraform/.terraform.tfstate.lock.info
+IaC/terraform/terraform.tfstate
+IaC/terraform/terraform.tfstate.backup
+
+clusters/production/flux-system/sealed-secret-keys.key

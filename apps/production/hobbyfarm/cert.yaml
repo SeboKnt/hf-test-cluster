@@ -1,0 +1,56 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: backend-tls-secret
+  namespace: hobbyfarm-system
+spec:
+  secretName: backend-tls-secret
+  issuerRef:
+    kind: ClusterIssuer
+    name: production
+  commonName: api.youngandhungry.org
+  dnsNames:
+  - api.youngandhungry.org
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: admin-tls-secret
+  namespace: hobbyfarm-system
+spec:
+  secretName: admin-tls-secret
+  issuerRef:
+    kind: ClusterIssuer
+    name: production
+  commonName: admin.youngandhungry.org
+  dnsNames:
+  - admin.youngandhungry.org
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: shell-tls-secret
+  namespace: hobbyfarm-system
+spec:
+  secretName: shell-tls-secret
+  issuerRef:
+    kind: ClusterIssuer
+    name: production
+  commonName: shell.youngandhungry.org
+  dnsNames:
+  - shell.youngandhungry.org
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ui-tls-secret
+  namespace: hobbyfarm-system
+spec:
+  secretName: ui-tls-secret
+  issuerRef:
+    kind: ClusterIssuer
+    name: production
+  commonName: learn.youngandhungry.org
+  dnsNames:
+  - learn.youngandhungry.org

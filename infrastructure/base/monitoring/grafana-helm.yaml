@@ -1,0 +1,10 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  repo: https://grafana.github.io/helm-charts
+  chart: grafana
+  version: 7.0.2
