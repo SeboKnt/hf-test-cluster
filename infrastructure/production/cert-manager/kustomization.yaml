@@ -5,10 +5,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: cluster-issuer.yaml
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
     - name: cert-manager
       namespace: cert-manager
+  resources:
+    - cluster-issuer.yaml
