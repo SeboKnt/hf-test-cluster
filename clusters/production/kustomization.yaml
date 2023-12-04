@@ -6,5 +6,8 @@ resources:
   - flux-kustomization.yaml
   - flux-namespace.yaml
   - sealed-secret-helm.yaml
+  - clusters/production
   - ../../apps/production
   - ../../infrastructure/production
+
+# Please note: file is called recursive
