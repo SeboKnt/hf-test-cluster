@@ -8,4 +8,7 @@ resources:
 patches:
   - path: values.yaml
     target:
-      kind: HelmRelease
+      kind: HelmRelease 
+      version: v1 
+      name: hobbyfarm 
+      namespace: hobbyfarm-system 
