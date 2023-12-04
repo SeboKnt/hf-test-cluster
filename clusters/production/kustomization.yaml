@@ -5,7 +5,7 @@ resources:
   - flux-helm.yaml
   - flux-kustomization.yaml
   - flux-namespace.yaml
-  - flux-s3-sealed-secrets.yaml
+  - flux-s3-sealed-secret.yaml
   - sealed-secret-helm.yaml
   - ./apps/production
   - ./infrastructure/production
