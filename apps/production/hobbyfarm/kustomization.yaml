@@ -1,5 +1,15 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
-resources:
-  - hcloud.yaml
-  - rbac.yaml
+metadata:
+  name: hobbyfarm
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./"
+  prune: true
+  dependsOn:
+    - name: base-hobbyfarm
+  resources:
+    - hcloud.yaml
+    - rbac.yaml
