@@ -1,12 +1,28 @@
 ---
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: apps
+  name: base-apps
   namespace: flux-system
 spec:
-  interval: 10m0s
-  path: ./apps/production
+  interval: 5m
+  path: ./apps/production/base/hobbyfarm
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: repo
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: production-apps
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: base-apps
+  interval: 5m
+  path: ./apps/production/production/hobbyfarm
   prune: true
   sourceRef:
     kind: GitRepository
