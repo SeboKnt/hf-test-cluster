@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - hcloud.yaml
   - rbac.yaml
-  - ../../base/
+  - ../../base/hobbyfarm
