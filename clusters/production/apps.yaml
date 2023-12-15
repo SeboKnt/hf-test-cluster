@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./apps/production/base/hobbyfarm
+  path: ./apps/base/hobbyfarm
   prune: true
   sourceRef:
     kind: GitRepository
@@ -22,7 +22,7 @@ spec:
   dependsOn:
     - name: base-apps
   interval: 5m
-  path: ./apps/production/production/hobbyfarm
+  path: ./apps/production/hobbyfarm
   prune: true
   sourceRef:
     kind: GitRepository
