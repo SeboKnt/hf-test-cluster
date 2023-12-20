@@ -5,3 +5,4 @@ resources:
   - grafana-ingress.yaml
   - prometheus-cert.yaml
   - prometheus-ingress.yaml
+  - ../../base/monitoring/
