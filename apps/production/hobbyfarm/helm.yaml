@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: hobbyfarm
-      version: 'latest'
+      version: 'v4.0.0'
       sourceRef:
         kind: HelmRepository
         name: hobbyfarm
