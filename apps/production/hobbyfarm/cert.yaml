@@ -9,9 +9,9 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: production
-  commonName: api.youngandhungry.org
+  commonName: api.k.youngandhungry.org
   dnsNames:
-  - api.youngandhungry.org
+  - api.k.youngandhungry.org
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -23,9 +23,9 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: production
-  commonName: admin.youngandhungry.org
+  commonName: admin.k.youngandhungry.org
   dnsNames:
-  - admin.youngandhungry.org
+  - admin.k.youngandhungry.org
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -37,9 +37,9 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: production
-  commonName: shell.youngandhungry.org
+  commonName: shell.k.youngandhungry.org
   dnsNames:
-  - shell.youngandhungry.org
+  - shell.k.youngandhungry.org
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -51,6 +51,6 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: production
-  commonName: learn.youngandhungry.org
+  commonName: learn.k.youngandhungry.org
   dnsNames:
-  - learn.youngandhungry.org
+  - learn.k.youngandhungry.org
