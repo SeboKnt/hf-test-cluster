@@ -1,0 +1,45 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: hobbyfarm
+  namespace: hobbyfarm-system
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: hobbyfarm
+      version: 'latest'
+      sourceRef:
+        kind: HelmRepository
+        name: hobbyfarm
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    admin:
+      image: seboknt/admin-ui:latest
+    ui:
+      image: seboknt/ui:latest
+    gargantua:
+      image: seboknt/gargantua:latest
+    ingress:
+      annotations: {}
+      enabled: true
+      hostnames:
+        admin: admin.k.youngandhungry.org
+        backend: api.k.youngandhungry.org
+        shell: shell.k.youngandhungry.org
+        ui: learn.k.youngandhungry.org
+      tls:
+        enabled: true
+        secrets:
+          admin: admin-tls-secret
+          backend: backend-tls-secret
+          shell: shell-tls-secret
+          ui: ui-tls-secret
+    insecure: false

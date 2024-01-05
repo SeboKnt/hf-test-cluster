@@ -9,10 +9,10 @@ ingress:
   annotations: {}
   enabled: true
   hostnames:
-    admin: admin.youngandhungry.org
-    backend: api.youngandhungry.org
-    shell: shell.youngandhungry.org
-    ui: learn.youngandhungry.org
+    admin: admin.k.youngandhungry.org
+    backend: api.k.youngandhungry.org
+    shell: shell.k.youngandhungry.org
+    ui: learn.k.youngandhungry.org
   tls:
     enabled: true
     secrets:
