@@ -5,6 +5,8 @@ metadata:
   name: base-apps
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: production-apps
   interval: 5m
   path: ./apps/base/hobbyfarm
   prune: true
