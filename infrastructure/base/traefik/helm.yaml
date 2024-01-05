@@ -22,49 +22,17 @@ spec:
       retries: 3
   values:
     globalArguments:
-      - "--global.sendanonymoususage=false"
-      - "--global.checknewversion=false"
-
-    additionalArguments:
-      - "--serversTransport.insecureSkipVerify=true"
-      - "--log.level=INFO"
-
-    deployment:
-      enabled: true
-      replicas: 3
-      annotations: {}
-      podAnnotations: {}
-      additionalContainers: []
-      initContainers: []
-
+      - "--global.checknewversion"
+      - "--global.sendanonymoususage"
     ports:
+      traefik:
+        expose: true
       web:
-        redirectTo:
-          port: websecure
+        expose: true
       websecure:
-        tls:
-          enabled: true
-          
-    ingressRoute:
-      dashboard:
-        enabled: false
-
-    providers:
-      kubernetesCRD:
-        enabled: true
-        ingressClass: traefik-external
-        allowExternalNameServices: true
-      kubernetesIngress:
-        enabled: true
-        allowExternalNameServices: true
-        publishedService:
-          enabled: false
-
-    rbac:
-      enabled: true
-
+        expose: true
+    additionalArguments:
+      - "--providers.kubernetesingress"
+      - "--providers.kubernetesingress.ingressclass=traefik"
     service:
-      enabled: true
       type: LoadBalancer
-      annotations: {}
-      labels: {}
