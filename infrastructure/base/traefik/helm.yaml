@@ -35,4 +35,14 @@ spec:
       - "--providers.kubernetesingress=true"
       - "--providers.kubernetesingress.ingressclass=traefik"
     service:
-      type: LoadBalancer
+      type: NodePort
+      ports:
+        traefik:
+          expose: true
+          nodePort: 32000
+        web:
+          expose: true
+          nodePort: 32001
+        websecure:
+          expose: true
+          nodePort: 32002
