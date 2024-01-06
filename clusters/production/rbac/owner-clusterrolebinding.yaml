@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: admin-clusterrolebinding
+  name: owner-clusterrolebinding
 subjects:
 - kind: User
-  name: admin
+  name: owner
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: admin-clusterrole
+  name: owner-clusterrole
   apiGroup: rbac.authorization.k8s.io
