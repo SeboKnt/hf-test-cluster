@@ -5,8 +5,6 @@ metadata:
   name: promtail
   namespace: monitoring
 spec:
-  dependsOn:
-    - name: cert-manager
   interval: 1h
   chart:
     spec:
