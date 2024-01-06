@@ -32,7 +32,7 @@ spec:
       websecure:
         expose: true
     additionalArguments:
-      - "--providers.kubernetesingress"
+      - "--providers.kubernetesingress=true"
       - "--providers.kubernetesingress.ingressclass=traefik"
     service:
       type: LoadBalancer
