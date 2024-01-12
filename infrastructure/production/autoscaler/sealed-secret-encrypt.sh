@@ -6,14 +6,16 @@
 
 
 # echo -n 'token' | base64
-kubectl create secret generic hcloud-token-secret \
+kubectl create secret generic hcloud \
+    --namespace=kube-system \
     --from-file=hcloud-token-secret.yaml \
     --dry-run=client -o json | kubeseal --format yaml \
         --controller-name=sealed-secrets \
         --controller-namespace=kube-system > hcloud-token-secret-sealed.yaml
 
 # base64 /pfad/zur/datei
-kubectl create secret generic cloud-init-secret \
+kubectl create secret generic cloud-init \
+    --namespace=kube-system \
     --from-file=cloud-init-secret.yaml \
     --dry-run=client -o json | kubeseal --format yaml \
         --controller-name=sealed-secrets \
