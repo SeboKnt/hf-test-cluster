@@ -31,7 +31,7 @@ spec:
                   - key: node-role.kubernetes.io/master
                     operator: Exists
       containers:
-        - image: registry.k8s.io/autoscaling/cluster-autoscaler:1.24
+        - image: registry.k8s.io/autoscaling/cluster-autoscaler:v1.24.0
           name: cluster-autoscaler
           resources:
             limits:
