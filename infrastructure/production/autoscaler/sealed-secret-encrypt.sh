@@ -4,7 +4,7 @@
 # Must be run manually from the user's machine
 # Prerequisites: Admin access to the cluster
 
-# Fetch the public cert used for encryption and store it locally
+# Fetch the public cert used for encryption
 kubeseal \
   --controller-name=sealed-secrets \
   --controller-namespace=kube-system \
@@ -12,13 +12,14 @@ kubeseal \
 
 kubectl create secret generic hcloud \
     --namespace=kube-system \
-    --from-literal=token=<hloudToken>== \
+    --from-literal=token=<token> \
     --dry-run=client -o yaml | \
 kubeseal \
   --controller-name=sealed-secrets \
   --controller-namespace=kube-system \
   --format yaml --cert mycert.pem > hcloud-token-secret-sealed.yaml
 
+# please add the token to the cloud-init.txt file first
 # node token: /var/lib/rancher/rke2/server/node-token
 ENCODED_DATA=$(base64 cloud-init.txt | tr -d '\n')
 kubectl create secret generic cloud-init \
