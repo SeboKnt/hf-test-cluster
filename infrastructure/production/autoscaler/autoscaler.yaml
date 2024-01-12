@@ -55,7 +55,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: cloud-init
-                key: cloud-init
+                key: data
           volumeMounts:
             - name: ssl-certs
               mountPath: /etc/ssl/certs/ca-certificates.crt

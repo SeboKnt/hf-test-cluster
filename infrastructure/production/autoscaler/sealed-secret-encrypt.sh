@@ -4,20 +4,28 @@
 # Must be run manually from the user's machine
 # Prerequisites: Admin access to the cluster
 
+# Fetch the public cert used for encryption and store it locally
+kubeseal \
+  --controller-name=sealed-secrets \
+  --controller-namespace=kube-system \
+  --fetch-cert > mycert.pem
 
-# echo -n 'token' | base64
 kubectl create secret generic hcloud \
     --namespace=kube-system \
-    --from-file=hcloud-token-secret.yaml \
-    --dry-run=client -o json | kubeseal --format yaml \
-        --controller-name=sealed-secrets \
-        --controller-namespace=kube-system > hcloud-token-secret-sealed.yaml
+    --from-literal=token=<hloudToken>== \
+    --dry-run=client -o yaml | \
+kubeseal \
+  --controller-name=sealed-secrets \
+  --controller-namespace=kube-system \
+  --format yaml --cert mycert.pem > hcloud-token-secret-sealed.yaml
 
-# base64 /pfad/zur/datei
+# node token: /var/lib/rancher/rke2/server/node-token
+ENCODED_DATA=$(base64 cloud-init.txt | tr -d '\n')
 kubectl create secret generic cloud-init \
     --namespace=kube-system \
-    --from-file=cloud-init-secret.yaml \
-    --dry-run=client -o json | kubeseal --format yaml \
-        --controller-name=sealed-secrets \
-        --controller-namespace=kube-system > cloud-init-secret-sealed.yaml
-
+    --from-literal=data="$ENCODED_DATA" \
+    --dry-run=client -o yaml | \
+kubeseal \
+  --controller-name=sealed-secrets \
+  --controller-namespace=kube-system \
+  --format yaml --cert mycert.pem > cloud-init-secret-sealed.yaml
