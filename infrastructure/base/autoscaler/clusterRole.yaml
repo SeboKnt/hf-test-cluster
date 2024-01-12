@@ -37,7 +37,7 @@ rules:
     verbs: ["watch", "list", "get"]
   - apiGroups: ["policy"]
     resources: ["poddisruptionbudgets"]
-    verbs: ["watch", "list"]
+    verbs: ["get", "list", "watch"]
   - apiGroups: ["apps"]
     resources: ["statefulsets", "replicasets", "daemonsets"]
     verbs: ["watch", "list", "get"]
