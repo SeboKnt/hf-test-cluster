@@ -8,11 +8,13 @@ spec:
   repo: https://fluxcd-community.github.io/helm-charts
   chart: flux2
   version: 2.11.1
-  set:
-    installCRDs: "true"
-    tolerations[0].key: "node.cloudprovider.kubernetes.io/uninitialized"
-    tolerations[0].value: "true"
-    tolerations[0].effect: "NoSchedule"
-    tolerations[1].key: "node.cloudprovider.kubernetes.io/hcloud"
-    tolerations[1].value: "true"
-    tolerations[1].effect: "NoSchedule"
+  valuesContent: |
+    tolerations:
+    - key: "node.cloudprovider.kubernetes.io/uninitialized"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "node.cloudprovider.kubernetes.io/hcloud"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
