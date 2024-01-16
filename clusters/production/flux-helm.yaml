@@ -10,3 +10,9 @@ spec:
   version: 2.11.1
   set:
     installCRDs: "true"
+    tolerations[0].key: "node.cloudprovider.kubernetes.io/uninitialized"
+    tolerations[0].value: "true"
+    tolerations[0].effect: "NoSchedule"
+    tolerations[1].key: "node.cloudprovider.kubernetes.io/hcloud"
+    tolerations[1].value: "true"
+    tolerations[1].effect: "NoSchedule"
