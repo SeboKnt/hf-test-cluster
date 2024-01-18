@@ -7,6 +7,7 @@ resources:
   - flux-kustomization.yaml
   - flux-namespace.yaml
   - flux-s3-sealed-secret.yaml
+  - hccm-helm.yaml
   - infrastructure.yaml
   - sealed-secret-helm.yaml
   - rbac/developer-role.yaml

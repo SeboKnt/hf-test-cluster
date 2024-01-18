@@ -1,0 +1,10 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: hccm
+  namespace: kube-system
+spec:
+  repo: https://charts.hetzner.cloud
+  chart: hccm
+  version: 1.19.0

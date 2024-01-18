@@ -8,13 +8,4 @@ spec:
   repo: https://fluxcd-community.github.io/helm-charts
   chart: flux2
   version: 2.11.1
-  valuesContent: |
-    tolerations:
-    - key: "node.cloudprovider.kubernetes.io/uninitialized"
-      operator: "Equal"
-      value: "true"
-      effect: "NoSchedule"
-    - key: "node.cloudprovider.kubernetes.io/hcloud"
-      operator: "Equal"
-      value: "true"
-      effect: "NoSchedule"
+  
