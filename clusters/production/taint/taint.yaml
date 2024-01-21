@@ -72,7 +72,6 @@ spec:
         volumeMounts:
         - name: kubeconfig
           mountPath: /.kube/config
-          subPath: config
       volumes:
       - name: kubeconfig
         persistentVolumeClaim:
