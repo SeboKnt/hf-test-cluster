@@ -8,6 +8,7 @@ resources:
   - flux-system/flux-s3-sealed-secret.yaml
   - rbac/developer-role.yaml
   - rbac/developer-rolebinding.yaml
+  - rbac/hf-namespace.yaml
   - rbac/owner-clusterrole.yaml
   - rbac/owner-clusterrolebinding.yaml
   - sealed-secret/sealed-secret-helm.yaml
