@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - autoscaler
   - cert-manager
-  - hccm
   - monitoring
