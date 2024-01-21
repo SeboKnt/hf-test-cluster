@@ -1,0 +1,86 @@
+## Du musst noch lösen 
+## wie die .kube/config anstatt 127.0.0.1
+## auf die IP des Masters kommt
+## evtl in die /etc/rancher/rke2/config.yaml die domain schreiben?
+
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: remove-taint
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: remove-taint
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "watch", "list", "taint"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: remove-taint
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: remove-taint
+subjects:
+- kind: ServiceAccount
+  name: remove-taint
+  namespace: kube-system
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kubeconfig-volume
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /etc/rancher/rke2/rke2.yaml
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kubeconfig-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: remove-taint
+  namespace: kube-system
+spec:
+  template:
+    spec:
+      serviceAccountName: remove-taint
+      containers:
+      - name: remove-taint
+        image: bitnami/kubectl:latest
+        command: ["sh", "-c", "kubectl taint nodes --all node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule-"]
+        volumeMounts:
+        - name: kubeconfig
+          mountPath: /.kube/config
+          subPath: config
+      - name: kubeconfig
+        persistentVolumeClaim:
+          claimName: kubeconfig-volume-claim
+      restartPolicy: OnFailure
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node.cloudprovider.kubernetes.io/uninitialized"
+        operator: "Exists"
+        effect: "NoSchedule"
+      restartPolicy: OnFailure
