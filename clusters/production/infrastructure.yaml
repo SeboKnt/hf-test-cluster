@@ -5,6 +5,8 @@ metadata:
   name: base-infrastructure
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cluster
   interval: 5m
   path: ./infrastructure/base
   prune: true
