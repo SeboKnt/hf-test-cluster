@@ -14,6 +14,7 @@ write_files:
 
 runcmd:
   - echo "cloud-init start" > /root/init-msg
-  - curl -sfL https://get.rke2.io | sh 
+  - curl -sfL https://get.rke2.io > /root/install.sh
+  - bash install.sh 
   - systemctl enable rke2-server.service
   - systemctl start rke2-server.service
