@@ -8,13 +8,15 @@ packages:
 write_files:
   - path: /etc/rancher/rke2/config.yaml
     content: |
-      token: <rke2Token>
       server: https://k8s.k.youngandhungry.org:9345
-
+      token: <rke2Token>
+      disable-cloud-controller: true
+      
 
 runcmd:
   - echo "cloud-init start" > /root/init-msg
   - curl -sfL https://get.rke2.io > /root/install.sh
-  - bash install.sh 
+  - chmod 777 /root/install.sh
+  - INSTALL_RKE2_TYPE="agent" /root/install.sh > /root/install.logs
   - systemctl enable rke2-server.service
   - systemctl start rke2-server.service
