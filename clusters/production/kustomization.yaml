@@ -12,6 +12,6 @@ resources:
   - rbac/owner-clusterrole.yaml
   - rbac/owner-clusterrolebinding.yaml
   - sealed-secret/sealed-secret-helm.yaml
-  - taint/taint.yaml
+  - sealed-secret/hcloud-token-sealed.yaml
   - apps.yaml
   - infrastructure.yaml

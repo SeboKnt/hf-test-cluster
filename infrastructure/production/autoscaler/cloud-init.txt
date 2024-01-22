@@ -10,9 +10,8 @@ write_files:
     content: |
       token: <rke2Token>
       server: https://k8s.k.youngandhungry.org:9345
-      node-label: ['worker=true']
 
 runcmd:
-  - curl -sfL https://get.rke2.io | sh -
-  - systemctl enable rke2
-  - systemctl start rke2
+  - [ sh, -c, "curl -sfL https://get.rke2.io | sh -" ]
+  - [ systemctl, enable, rke2 ]
+  - [ systemctl, start, rke2 ]
