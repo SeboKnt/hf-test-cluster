@@ -11,7 +11,9 @@ write_files:
       token: <rke2Token>
       server: https://k8s.k.youngandhungry.org:9345
 
+
 runcmd:
-  - [ sh, -c, "curl -sfL https://get.rke2.io | sh -" ]
-  - [ systemctl, enable, rke2 ]
-  - [ systemctl, start, rke2 ]
+  - echo "cloud-init start" > /root/init-msg
+  - curl -sfL https://get.rke2.io | sh 
+  - systemctl enable rke2-server.service
+  - systemctl start rke2-server.service
